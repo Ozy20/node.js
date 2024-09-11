@@ -1,4 +1,4 @@
-const AJV = require("ajv");
+const AJV = require("ajv").default;
 const ajv = new AJV();
 const schema = {
     type: "object",

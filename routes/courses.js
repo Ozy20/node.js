@@ -1,19 +1,31 @@
 const express = require("express");
-const reouter = express.Router();
+const router = express.Router();
 const coursesControler = require("../controllers/coursesControler")
 const coursesControlerDB = require("../controllers/coursesControlerDB")
-
+const crsValidator = require("../util/courseValidatorMW")
 /////////////////////////////////////////////////////
-reouter.get("/",coursesControlerDB.getAll);
+router.param("id",(req,res,next,val)=>{
+
+    if(/^[0-9a-fA-F]{24}$/.test(val)){
+        req.id = val;
+        next()
+    }
+    else{
+        res.status(403).send("bad request")
+    }
+
+});
+
+router.get("/",coursesControlerDB.getAll);
+router.post("/add",crsValidator,coursesControlerDB.addNew );
+
+router.get("/:id",coursesControlerDB.getById );
  
-reouter.get("/:id",coursesControlerDB.getById );
+router.delete("/delete/:id",coursesControlerDB.deleteById);
  
-reouter.delete("/delete/:id",coursesControlerDB.deleteById);
+router.put("/modify/:id",coursesControlerDB.modifyById);
  
-reouter.put("/modify/:id",coursesControlerDB.modifyById);
- 
-reouter.post("/add",coursesControlerDB.addNew );
  
  
 
- module.exports = reouter;
+ module.exports = router;

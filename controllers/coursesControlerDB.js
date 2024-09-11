@@ -11,36 +11,46 @@ const addNew = (req, res) => {
 }
 //2-get all
 const getAll = (req, res) => {
+
     Course.find().then((data) => { res.status(200).send(data) }).catch((err) => {
         res.send(err);
     })
-
 }
 //3-modify course
-const modifyById = async(req, res) => {
+const modifyById = async (req, res) => {
     const newCrs = req.body
-    let crs = await Course.findOneAndUpdate({ id: req.params.id }, newCrs,{new:true});
-    if(crs){
-        res.status(200).send({message:"student updated",data:crs})
+    try {
+        let crs = await Course.findOneAndUpdate({ _id: req.params.id }, newCrs, { new: true });
+        if (crs) {
+            res.status(200).send({ message: "student updated", data: crs })
+        }
+        else {
+            res.status(404).send("student not f0und")
+        }
     }
-    else{
-        res.status(404).send("student not f0und")
-    }
+    catch (err) {
+        res.status(400).send("bad req")
 
+    }
 }
 //4- get by id
 const getById = async (req, res) => {
-    let course = await Course.findOne({ id: req.params.id })
-    if(course){
-        res.send(course)
+    try {
+        let course = await Course.findOne({ _id: req.params.id })
+        if (course) {
+            res.send(course)
+        }
+        else (
+            res.status(404).send("course is not found")
+        )
     }
-    else(
-        res.status(404).send("course is not found")
-    )
+    catch (err) {
+        res.status(400).send("bad req")
+    }
 
 }
 //5- delete by id
 const deleteById = (req, res) => {
-    Course.findOneAndDelete({ id: req.params.id }).then((value) => res.status(200).send({ message: "course deleted", data: value }))
+    Course.findOneAndDelete({ _id: req.params.id }).then((value) => res.status(200).send({ message: "course deleted", data: value }))
 }
 module.exports = { addNew, getAll, modifyById, getById, deleteById }
