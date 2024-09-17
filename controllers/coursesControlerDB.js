@@ -22,10 +22,10 @@ const modifyById = async (req, res) => {
     try {
         let crs = await Course.findOneAndUpdate({ _id: req.params.id }, newCrs, { new: true });
         if (crs) {
-            res.status(200).send({ message: "student updated", data: crs })
+            res.status(200).send({ message: "course updated", data: crs })
         }
         else {
-            res.status(404).send("student not f0und")
+            res.status(404).send("course not f0und")
         }
     }
     catch (err) {
