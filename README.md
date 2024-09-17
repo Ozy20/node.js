@@ -33,5 +33,3 @@ This repository contains various tutorials and examples for backend development 
 - **JWT** (JSON Web Token for authentication)
 - **EJS** (Embedded JavaScript templating)
 
-## License
-This project is licensed under the MIT License.
