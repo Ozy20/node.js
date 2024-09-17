@@ -13,10 +13,10 @@ router.post("/add", userValidator, async (req, res) => {
             res.status(403).send("User already exists");
         } else {
             // Create a new user since no existing user was found
-            let hashedPass =await bcrypt.hash(req.body.password,10)
-            user = new User({name:req.body.name,email:req.body.email,password:hashedPass}); // Pass user data to create a new user
+            let hashedPass = await bcrypt.hash(req.body.password, 10)
+            user = new User({ name: req.body.name, email: req.body.email, password: hashedPass }); // Pass user data to create a new user
             await user.save(); // Save the new user
-            res.status(200).send({ message: "User added", data: {name:user.name,email:user.email} });
+            res.status(200).send({ message: "User added", data: { name: user.name, email: user.email } });
         }
     } catch (error) {
         console.error(error);  // Log the error for debugging

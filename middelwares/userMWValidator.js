@@ -1,11 +1,11 @@
 const validator = require("../util/usersValidator")
-module.exports=(req,res,next)=>{
+module.exports = (req, res, next) => {
     let valid = validator(req.body);
-    if(valid){
-        req.valid = 1 ;
+    if (valid) {
+        req.valid = 1;
         next()
     }
-    else{
+    else {
         res.status(403).send("bad reeq")
     }
 }
