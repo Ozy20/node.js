@@ -20,7 +20,7 @@ router.post("/add", userValidator, async (req, res) => {
         } else {
             // Create a new user since no existing user was found
             let hashedPass = await bcrypt.hash(req.body.password, 10)
-            user = new User({ name: req.body.name, email: req.body.email, password: hashedPass }); // Pass user data to create a new user
+            user = new User({ name: req.body.name, email: req.body.email, password: hashedPass ,isAdmin:req.body.isAdmin}); // Pass user data to create a new user
             await user.save(); // Save the new user
             const token = user.genAuthToken();
             console.log(token);

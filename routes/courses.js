@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const coursesControler = require("../controllers/coursesControler")
 const coursesControlerDB = require("../controllers/coursesControlerDB")
+const authRole = require("../middelwares/AuthPerMW")
 /////////////////////////////////////////////////////
 router.param("id", (req, res, next, val) => {
 
@@ -16,10 +17,10 @@ router.param("id", (req, res, next, val) => {
 });
 
 router.get("/", coursesControlerDB.getAll);
-router.post("/add",  coursesControlerDB.addNew);
+router.post("/add", authRole, coursesControlerDB.addNew);
 router.get("/:id", coursesControlerDB.getById);
-router.delete("/delete/:id", coursesControlerDB.deleteById);
-router.put("/modify/:id", coursesControlerDB.modifyById);
+router.delete("/delete/:id",authRole, coursesControlerDB.deleteById);
+router.put("/modify/:id",authRole, coursesControlerDB.modifyById);
 
 
 
