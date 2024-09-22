@@ -1,4 +1,3 @@
-
 # Node.js Backend Development Tutorials
 
 This repository contains various tutorials and examples for backend development using **Node.js**, **Express.js**, and **MongoDB**.
@@ -9,21 +8,26 @@ This repository contains various tutorials and examples for backend development 
 - RESTful API development using Express.js
 - JWT-based authentication
 - Dynamic views using EJS templates
+- Configuration management with **config** package
 
 ## Installation
 1. Clone the repository:
-   ```bash
    git clone https://github.com/Ozy20/node.js.git
-   ```
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
 
-3. Run the application:
-   ```bash
+2. Install dependencies:
+   npm install
+
+3. Configure your application:
+   - Create a `config` folder in the root of your project.
+   - Add configuration files for different environments (e.g., `development.json`, `production.json`).
+   - Example `development.json`:
+     {
+       "jwtsec": "your-secret-key",
+       "db": "mongodb://127.0.0.1:27017/your-db"
+     }
+
+4. Run the application:
    node app.js
-   ```
 
 ## Technologies Used
 - **Node.js**
@@ -32,6 +36,6 @@ This repository contains various tutorials and examples for backend development 
 - **Mongoose** (ODM for MongoDB)
 - **JWT** (JSON Web Token for authentication)
 - **EJS** (Embedded JavaScript templating)
+- **config** (Configuration management)
 
-## License
-This project is licensed under the MIT License.
+
