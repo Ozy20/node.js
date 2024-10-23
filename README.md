@@ -1,6 +1,3 @@
-# Let's create the README file for the user
-
-readme_content = """
 # Simple Chat App
 
 This branch contains a simple chat application built with Node.js, Express.js, Socket.IO, and MongoDB. The app allows real-time communication between users and stores messages in a MongoDB database.
