@@ -37,5 +37,5 @@ This repository contains various tutorials and examples for backend development 
 - **JWT** (JSON Web Token for authentication)
 - **EJS** (Embedded JavaScript templating)
 - **config** (Configuration management)
-
+- **nodemailer** (verify accounts and send emails)
 
