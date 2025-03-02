@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const jwt = require("jsonwebtoken")
 const config = require("config")
 
-mongoose.connect("mongodb://127.0.0.1:27017/test").then(
+mongoose.connect("mongodb+srv://userName:password@cluster0.epi9w.mongodb.net/teamUp?retryWrites=true&w=majority&appName=Cluster0").then(
     () => {
         console.log("connected to the users database");
     }
@@ -36,7 +36,7 @@ const userSchema = new mongoose.Schema({
     },
     isVerified:{
         type:Boolean,
-        defualt:false
+        default:false
     }
 });
 

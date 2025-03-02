@@ -24,7 +24,10 @@ app.post("/register", async (req, res) => {
             return res.status(400).send({ message: "User with this email already exists!" });
         }
 
+        console.log("Hashing password...");
         let hashedPass = await bcrypt.hash(req.body.password, 10);
+        console.log("Password hashed successfully.");
+
         let user = new User({
             name: req.body.name,
             email: req.body.email,
@@ -44,7 +47,7 @@ app.post("/register", async (req, res) => {
         });
 
     } catch (err) {
-        console.error(err);
+        console.error("Error during registration:", err);
         res.status(500).send({ message: "Internal server error" });
     }
 });
