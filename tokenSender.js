@@ -22,7 +22,7 @@ const sendVerificationEmail = (email) => {
         to: email,
         subject: 'Email Verification',
         text: `Hi! Please verify your email by clicking the link below:
-               http://localhost:3101/verify/${token} 
+               https://probable-spoon-7q475gqq7662pjg5-3101.app.github.dev/verify/${token} 
                This link will expire in 10 minutes.`
     };
 

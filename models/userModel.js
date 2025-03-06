@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const jwt = require("jsonwebtoken")
 const config = require("config")
 
-mongoose.connect("mongodb+srv://userName:password@cluster0.epi9w.mongodb.net/teamUp?retryWrites=true&w=majority&appName=Cluster0").then(
+mongoose.connect("mongodb+srv://202127085:pass@cluster0.epi9w.mongodb.net/teamUp?retryWrites=true&w=majority&appName=Cluster0").then(
     () => {
         console.log("connected to the users database");
     }
